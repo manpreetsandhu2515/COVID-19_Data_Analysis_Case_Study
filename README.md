@@ -1,221 +1,156 @@
+<img width="300" height="100" alt="image" src="https://github.com/user-attachments/assets/b29fddb6-0191-4a34-81d0-91437d143a54" />
+
 # COVID-19_Data_Analysis_Case_Study
-Overview
 
-The COVID-19 pandemic, caused by the SARS-CoV-2 virus, emerged in late 2019 and rapidly spread across the globe, resulting in severe health, economic, and social impacts.
-This unprecedented crisis highlighted the importance of data-driven decision making in controlling pandemics.
+## Overview
+The COVID-19 pandemic, caused by the SARS-CoV-2 virus, emerged in late 2019 and rapidly spread worldwide, causing severe health, economic, and social disruption. This crisis emphasized the importance of data analysis for tracking disease spread, understanding trends, and supporting government and healthcare decisions.
 
-By tracking and analyzing data on confirmed cases, recoveries, and deaths, policymakers and health professionals can make informed decisions to mitigate the spread of the virus and allocate resources efficiently.
+By analyzing confirmed cases, recoveries, and deaths, this project demonstrates how data can guide policy-making and resource allocation during a global health emergency.
+---
+## Dataset Details
 
-Dataset Details
+This project uses three daily-updated global datasets from the Johns Hopkins University CSSE repository:
 
-This case study uses three time-series datasets (from Johns Hopkins CSSE), each providing daily cumulative data for different countries and regions:
+### 1. Confirmed Cases Dataset
+- Cumulative confirmed COVID-19 cases per day  
+- Time period: **January 22, 2020 → May 29, 2021**  
+- 276+ geographic entries  
 
-1. Confirmed Cases Dataset
+### 2. Deaths Dataset
+- Cumulative COVID-19 deaths per day  
+- Same structure as the confirmed dataset  
 
-Contains cumulative confirmed COVID-19 cases per day.
+### 3. Recovered Cases Dataset
+- Cumulative recovered cases per day  
+- Used to analyze recovery performance and disease outcomes  
 
-Covers: Jan 22, 2020 → May 29, 2021
+### Common Columns
+All datasets include:
+- Province/State  
+- Country/Region  
+- Latitude (Lat)  
+- Longitude (Long)  
+- Date-wise cumulative counts  
+--
+## Objectives of the Case Study
 
-Includes 276+ geographic regions.
+### 1. Practical Python Application
+Use:
+- **Pandas** for data manipulation  
+- **NumPy** for numerical operations  
+- **Matplotlib** for visualizations  
 
-2. Deaths Dataset
+### 2. Insightful Data Analysis
+Understand:
+- Spread trends  
+- Mortality variations  
+- Recovery performance across countries  
 
-Contains cumulative COVID-19-related deaths.
+### 3. Skill Development
+Hands-on practice with:
+- Data cleaning  
+- Handling missing values  
+- Time-series analysis  
+- Merging datasets  
+- Exploratory Data Analysis (EDA)  
+---
+# Analysis Questions
+## 1. Data Loading
+- Load confirmed, deaths, and recovered datasets using Pandas.
+---
+## 2. Data Exploration
+- View dataset shape, columns, and datatypes  
+- Display sample rows  
+- Generate:
+  - Confirmed cases over time for **top countries**
+  - Confirmed cases over time for **China**
+---
+## 3. Handling Missing Data
+- Identify NaN values  
+- Apply **forward fill (ffill)** for time-series imputation  
+---
+## 4. Data Cleaning
+- Replace empty values in `Province/State` with **"All Provinces"**
+---
+# Independent Dataset Analysis
 
-Structured similarly to confirmed cases.
+### 5. Peak Daily New Cases (Germany, France, Italy)
+- Compute daily new cases  
+- Identify the largest single-day spike  
+- Determine which country had the **highest surge** and on which date  
+---
+### 6. Recovery Rate Comparison
+**Recovery Rate = recoveries / confirmed cases**
 
-3. Recovered Cases Dataset
-
-Contains cumulative recovered patient counts.
-
-Essential for understanding recovery trends and treatment outcomes.
-
-Common Columns
-
-Each dataset includes:
-
-Province/State
-
-Country/Region
-
-Latitude (Lat)
-
-Longitude (Long)
-
-Daily cumulative counts across dates
-
-Objective of the Case Study
-1. Practical Application of Python
-
-Use Python libraries (Pandas, NumPy, Matplotlib) for:
-
-Data loading
-
-Data cleaning
-
-Data transformation
-
-Data visualization
-
-2. Insightful Data Analysis
-
-Generate insights into the spread, recovery, and mortality associated with COVID-19 across different countries and timelines.
-
-3. Skill Development
-
-Strengthen knowledge in:
-
-Data manipulation
-
-Handling missing values
-
-Merging datasets
-
-Time-series analysis
-
-Exploratory Data Analysis (EDA)
-
-Analysis Questions
-1. Data Loading
-
-Load COVID-19 datasets (confirmed, deaths, recovered) using Pandas.
-
-2. Data Exploration
-
-Examine dataset shape (rows, columns).
-
-Inspect data types.
-
-Display first and last few rows.
-
-Generate:
-
-Plots of confirmed cases over time for top affected countries
-
-Plot of confirmed cases over time for China
-
-3. Handling Missing Data
-
-Identify missing values.
-
-Impute using forward fill (ffill) for time-series continuity.
-
-4. Data Cleaning
-
-Replace blank values in Province/State column with "All Provinces".
-
-Independent Dataset Analysis
-5. Daily Peak of New Cases
-
-Analyze Germany, France, Italy:
-
-Compute daily new cases
-
-Identify:
-
-Peak daily increase
-
-Date of occurrence
-
-Determine which country had the highest single-day surge.
-
-6. Recovery Rate Comparison
-
-Recovery Rate = recoveries / confirmed cases
 Compare:
+- **Canada vs Australia**
+As of **December 31, 2020**
+---
+### 7. Death Rate Distribution in Canada
+**Death Rate = deaths / confirmed cases**
 
-Canada
+Find:
+- Province with **highest** death rate  
+- Province with **lowest** death rate  
+---
+# Data Transformation
 
-Australia
-(as of Dec 31, 2020)
-Identify which country performed better.
+### 8. Wide → Long Format Conversion (Deaths Dataset)
+Use Pandas `melt()` to convert date columns into rows:
+- Columns: Country/Region, Province/State, Date, Death Count  
+- Convert `Date` to `datetime` format  
+---
+### 9. Total Deaths per Country
+Calculate cumulative deaths for all countries.
+---
+### 10. Top 5 Countries by Average Daily Deaths
+- Compute daily deaths  
+- Calculate averages  
+- Pick top 5 countries  
+---
+### 11. Total Deaths Over Time in the United States
+- Plot cumulative deaths over time  
+---
+# Data Merging
 
-7. Death Rate Distribution in Canada
+### 12. Merge Datasets
+Merge confirmed, deaths, and recovered datasets on:
+- `Country/Region`
+- `Date`
 
-Death Rate = deaths / confirmed cases
-
-Compute death rates for all provinces.
-
-Identify:
-
-Province with highest death rate
-
-Province with lowest death rate
-
-Data Transformation
-8. Transform Deaths Dataset (Wide → Long Format)
-
-Convert date columns into rows using Pandas melt()
-Ensure:
-
-Date column is datetime type
-
-One row = one date per country
-
-9. Total Deaths per Country
-
-Calculate cumulative deaths for every country.
-
-10. Top 5 Countries by Average Daily Deaths
-
-Compute daily deaths → get average → rank top 5.
-
-11. Evolution of Deaths in the United States
-
-Plot cumulative total deaths over time.
-
-Data Merging
-12. Merge Datasets
-
-Merge confirmed, deaths, recoveries into a single dataset on:
-
-Country/Region
-
-Date
-
-13. Monthly Aggregation (Global)
-
+Result: A unified dataset showing complete pandemic statistics.
+---
+### 13. Monthly Aggregation (All Countries)
 For each country:
+- Monthly **confirmed cases**  
+- Monthly **deaths**  
+- Monthly **recoveries**  
+---
+### 14. Monthly Analysis for USA, Italy, Brazil
+Repeat the above monthly aggregation for:
+- United States  
+- Italy  
+- Brazil  
+---
+# Combined Data Analysis
 
-Monthly sum of:
+### 15. Highest Average Death Rates in 2020
+**Death Rate = deaths / confirmed cases**
 
-Confirmed cases
+- Identify 3 countries with the highest average death rates  
+- Interpret what this indicates about outbreak severity, healthcare stress, or reporting accuracy  
+---
+### 16. South Africa: Recoveries vs Deaths
+Compare:
+- Total recoveries  
+- Total deaths  
 
-Deaths
+Interpret what this reveals about case outcomes.
+---
+### 17. United States Monthly Recovery Ratio
+**Recovery Ratio = recoveries / confirmed cases**
 
-Recoveries
-
-14. Monthly Analysis for USA, Italy, Brazil
-
-Repeat the monthly aggregation for:
-
-United States
-
-Italy
-
-Brazil
-
-Combined Data Analysis
-15. Highest Average Death Rates in 2020
-
-Identify top 3 countries with maximum:
-Death Rate = deaths / confirmed
-Interpret what this indicates about healthcare stress, reporting accuracy, or outbreak intensity.
-
-16. South Africa: Recoveries vs Deaths
-
-Compare totals to understand:
-
-Outcome severity
-
-Healthcare success rate
-
-17. US Recovery Ratio (Monthly)
-
-Recovery Ratio = recoveries / confirmed
-Analyze from March 2020 → May 2021
-Identify:
-
-Month with highest recovery ratio
-
-Potential reasons (e.g., vaccination rollouts, treatment improvements)
+Analyze from **March 2020 → May 2021**:
+- Identify month with **highest recovery ratio**
+- Discuss potential reasons (e.g., vaccination, treatment improvements)
+---
