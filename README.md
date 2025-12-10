@@ -1,4 +1,4 @@
-<img width="300" height="100" alt="image" src="https://github.com/user-attachments/assets/b29fddb6-0191-4a34-81d0-91437d143a54" />
+<img width="300" height="150" alt="image" src="https://github.com/user-attachments/assets/b29fddb6-0191-4a34-81d0-91437d143a54" />
 
 # COVID-19_Data_Analysis_Case_Study
 
